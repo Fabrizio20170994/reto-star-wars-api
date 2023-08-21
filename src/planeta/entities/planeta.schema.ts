@@ -2,11 +2,12 @@ import * as dynamoose from 'dynamoose';
 
 export const PlanetaSchema = new dynamoose.Schema(
   {
-    nombre: {
+    id: {
       type: String,
       hashKey: true,
       required: true,
     },
+    nombre: String,
     diametro: String,
     periodo_rotacion: String,
     periodo_orbital: String,

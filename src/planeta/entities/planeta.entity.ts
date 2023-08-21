@@ -1,6 +1,7 @@
 import { Item } from 'dynamoose/dist/Item';
 
 export class Planeta extends Item {
+  id: string;
   nombre: string;
   diametro: string;
   periodo_rotacion: string;
@@ -13,6 +14,6 @@ export class Planeta extends Item {
   residentes: string[];
   peliculas: string[];
   url: string;
-  creado: string;
-  editado: string;
+  creado: Date;
+  editado: Date;
 }

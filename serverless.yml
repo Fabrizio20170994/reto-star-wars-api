@@ -31,10 +31,10 @@ resources:
       Properties:
         TableName: planetas
         AttributeDefinitions:
-          - AttributeName: nombre
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: nombre
+          - AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

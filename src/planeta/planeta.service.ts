@@ -5,6 +5,7 @@ import { Model } from 'dynamoose/dist/Model';
 import { Planeta } from './entities/planeta.entity';
 import { PlanetaSchema } from './entities/planeta.schema';
 import * as dynamoose from 'dynamoose';
+import { uuid } from 'uuidv4';
 
 @Injectable()
 export class PlanetaService {
@@ -17,23 +18,14 @@ export class PlanetaService {
   }
 
   create(createPlanetaDto: CreatePlanetaDto) {
-    console.info(dynamoose.aws.ddb.DynamoDB);
-    return this.dbInstance.create(createPlanetaDto);
+    return this.dbInstance.create({ id: uuid(), ...createPlanetaDto });
   }
 
   findAll() {
-    return `This action returns all planeta`;
+    return this.dbInstance.scan().exec();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} planeta`;
-  }
-
-  update(id: number, updatePlanetaDto: UpdatePlanetaDto) {
-    return `This action updates a #${id} planeta`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} planeta`;
+    return this.dbInstance.query('id').contains(id).exec();
   }
 }

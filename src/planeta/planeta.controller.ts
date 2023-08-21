@@ -9,10 +9,9 @@ import {
 } from '@nestjs/common';
 import { PlanetaService } from './planeta.service';
 import { CreatePlanetaDto } from './dto/create-planeta.dto';
-import { UpdatePlanetaDto } from './dto/update-planeta.dto';
 import { ApiBody } from '@nestjs/swagger';
 
-@Controller('planeta')
+@Controller('planetas')
 export class PlanetaController {
   constructor(private readonly planetaService: PlanetaService) {}
 
@@ -30,15 +29,5 @@ export class PlanetaController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.planetaService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePlanetaDto: UpdatePlanetaDto) {
-    return this.planetaService.update(+id, updatePlanetaDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.planetaService.remove(+id);
   }
 }

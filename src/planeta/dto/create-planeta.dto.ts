@@ -1,4 +1,4 @@
-import { IsArray, IsString } from 'class-validator';
+import { IsArray, IsDate, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePlanetaDto {
@@ -53,10 +53,10 @@ export class CreatePlanetaDto {
   url: string;
 
   @ApiProperty()
-  @IsString()
-  creado: string;
+  @IsDate()
+  creado: Date;
 
   @ApiProperty()
-  @IsString()
-  editado: string;
+  @IsDate()
+  editado: Date;
 }
