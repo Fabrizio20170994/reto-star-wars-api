@@ -11,17 +11,16 @@ $ npm install
 ## Ejecutar el App
 
 ```bash
-# local
+# Local
 $ sls offline
 
-# deploy to AWS
+# Despliegue AWS (asegurar de tener configurado las credenciales en ./aws)
 $ sls deploy
 ```
 
 ## Test
 
 ```bash
-# unit tests
 $ npm run test
 ```
 
