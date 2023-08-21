@@ -24,3 +24,7 @@ $ sls deploy
 # unit tests
 $ npm run test
 ```
+
+## Documentación
+
+Documentación Swagger autogenerada en `/api`
