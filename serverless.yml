@@ -11,18 +11,30 @@ provider:
   name: aws
   runtime: nodejs16.x
   timeout: 20
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:DescribeTable
+      Resource:
+        - { 'Fn::GetAtt': ['planetasTable', 'Arn'] }
 
 resources:
   Resources:
-    testTable:
+    planetasTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: testTable
+        TableName: planetas
         AttributeDefinitions:
-          - AttributeName: email
+          - AttributeName: nombre
             AttributeType: S
         KeySchema:
-          - AttributeName: email
+          - AttributeName: nombre
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
